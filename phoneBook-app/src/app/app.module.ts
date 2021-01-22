@@ -11,11 +11,19 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
+import { ContactRecordComponent } from './contact-record/contact-record.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
+import { AddContactComponent } from './add-contact/add-contact.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ContactRecordComponent,
+    AddContactComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatDialogModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
