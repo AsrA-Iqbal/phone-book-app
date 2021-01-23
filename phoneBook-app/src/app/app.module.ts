@@ -46,7 +46,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
   ],
   // exports:[AddContactComponent],
-  providers: [],
+  providers: [ContactRecordComponent],
   entryComponents:[AddContactComponent],
   bootstrap: [AppComponent]
 })

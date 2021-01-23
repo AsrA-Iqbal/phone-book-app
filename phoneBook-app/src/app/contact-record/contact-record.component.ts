@@ -7,11 +7,11 @@ import { AddContactComponent } from '../add-contact/add-contact.component';
 
 
 var ELEMENT_DATA: ContactRecords[] = [
-  { id: 0, name: 'Zafar', lname: 'Iqbal', contact: '03002602205', wplace: 'EPZ Zone', email: 'zafar_iqbalsa@yahoo.com' },
   { id: 1, name: 'Zafar', lname: 'Iqbal', contact: '03002602205', wplace: 'EPZ Zone', email: 'zafar_iqbalsa@yahoo.com' },
   { id: 2, name: 'Zafar', lname: 'Iqbal', contact: '03002602205', wplace: 'EPZ Zone', email: 'zafar_iqbalsa@yahoo.com' },
   { id: 3, name: 'Zafar', lname: 'Iqbal', contact: '03002602205', wplace: 'EPZ Zone', email: 'zafar_iqbalsa@yahoo.com' },
-  { id: 4, name: 'Zafar', lname: 'Iqbal', contact: '03002602205', wplace: 'EPZ Zone', email: 'zafar_iqbalsa@yahoo.com' }
+  { id: 4, name: 'Zafar', lname: 'Iqbal', contact: '03002602205', wplace: 'EPZ Zone', email: 'zafar_iqbalsa@yahoo.com' },
+  { id: 5, name: 'Zafar', lname: 'Iqbal', contact: '03002602205', wplace: 'EPZ Zone', email: 'zafar_iqbalsa@yahoo.com' }
 ]
 @Component({
   selector: 'app-contact-record',
@@ -21,6 +21,7 @@ var ELEMENT_DATA: ContactRecords[] = [
 
 export class ContactRecordComponent implements OnInit {
   // @ViewChild(AddContactComponent)  addcontact: AddContactComponent;
+  idForContact: number = 4;
 
   // data:any
   showHideDetails: boolean = true;
@@ -49,26 +50,24 @@ export class ContactRecordComponent implements OnInit {
     });
 
   }
-  openDialog(items) {
+  deleteRecord(items) {
     console.log(items)
     const dialogRef = this.dialog.open(AddContactComponent, {
       width: "100%",
       height: "50%",
       data: items
     });
-
+    // this.dataSource = this.dataSource.filter(table => table !== items )
   }
   ngOnInit() {
 
     this.show_hide_details();
+    // localStorage.setItem('my_records', JSON.stringify(this.dataSource));
     this.dataSource =JSON.parse(localStorage.getItem('my_records'))
     // this.dataSource = this.addcontact.obj
+  
+
     console.log(this.dataSource);
   }
-  // ngAfterViewInit(){
-  //   // this.dataSource = this.addcontact.name;
-
-  // console.log(this.addcontact.name);
-  // }
-
+ 
 }
