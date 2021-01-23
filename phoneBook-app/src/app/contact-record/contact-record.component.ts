@@ -22,52 +22,63 @@ var ELEMENT_DATA: ContactRecords[] = [
 export class ContactRecordComponent implements OnInit {
   // @ViewChild(AddContactComponent)  addcontact: AddContactComponent;
   idForContact: number = 4;
+  tablerecords: any;
 
-  // data:any
+  data:any
   showHideDetails: boolean = true;
   displayedColumns: string[] = ['id', 'name', 'lname', 'contact', 'wplace', 'email', 'action']
   dataSource = ELEMENT_DATA;
+  tablerecordid: any;
   constructor(private dialog: MatDialog) {
 
-  
+
   }
+
 
   show_hide_details() {
     this.showHideDetails = !this.showHideDetails;
   }
 
   opendialog() {
-    // console.log(items)
     var dialogRef = this.dialog.open(AddContactComponent, {
       width: "100%",
       height: "50%",
       data: this.dataSource,
     });
     dialogRef.afterClosed().subscribe(result => {
-      // result.obj = this.dataSource;
+
       console.log('The dialog was closed');
 
     });
-
   }
+
+
   deleteRecord(items) {
     console.log(items)
-    const dialogRef = this.dialog.open(AddContactComponent, {
-      width: "100%",
-      height: "50%",
-      data: items
-    });
-    // this.dataSource = this.dataSource.filter(table => table !== items )
+      this.data =items
+    this.dataSource = this.dataSource.filter(table => table !== items);
+    this.tablerecords = JSON.parse(localStorage.getItem('my_records'));
+    console.log(this.tablerecords)
+    for (var i = 0; i < this.tablerecords.length; ++i) {
+      if (this.tablerecords[i].id === items.id) {
+        this.tablerecords.splice(i, 1);
+        console.log(this.tablerecords)
+      }
+      this.idForContact = 4;
+      localStorage.setItem("my_records", JSON.stringify(this.tablerecords))
+    }
+
   }
+
+  
   ngOnInit() {
 
     this.show_hide_details();
-    // localStorage.setItem('my_records', JSON.stringify(this.dataSource));
-    this.dataSource =JSON.parse(localStorage.getItem('my_records'))
-    // this.dataSource = this.addcontact.obj
-  
+    this.dataSource = JSON.parse(localStorage.getItem('my_records'))
+
+
 
     console.log(this.dataSource);
   }
- 
+
 }

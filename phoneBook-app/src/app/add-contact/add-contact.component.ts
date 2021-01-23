@@ -13,25 +13,14 @@ import { ContactRecords } from '../contact-records';
 })
 export class AddContactComponent implements OnInit {
   // @ViewChild(ContactRecordComponent) contactRef: ContactRecordComponent;
-  // obj:ContactRecordComponent["dataSource"]
-
   
-  //lnameForContact: string;
-  // name : string = '';
+
   obj: ContactRecords[] = [];
-  tablerecords: any;
-  // idForContact: number = 4;
-  //  obj: data[]=[]
 
   constructor(private contactrecord:ContactRecordComponent,private fb: FormBuilder, public dialogRef: MatDialogRef<ContactRecordComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: [], public dialog: MatDialog,
-    // public addcontact: ContactRecordComponent
-  ) {
-
-    this.obj = this.data;
-    // this.todos = this.todos.filter(todo => todo.id !== id)
-
-  }
+    @Inject(MAT_DIALOG_DATA) public data: [], public dialog: MatDialog, )
+    
+     { this.obj = this.data;}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -59,10 +48,6 @@ export class AddContactComponent implements OnInit {
     //var tableobject = this.obj;
   }
 
-  // ngAfterViewInit(){
-  //   // this.obj===this.addcontact.dataSource;
-  //   console.log(this.addcontactRef)
-  // }
 
   Onsubmit() {
 
@@ -112,14 +97,9 @@ export class AddContactComponent implements OnInit {
       // this.idForContact++;
      
     var tableobject = this.obj;
-    // this.idForContact = Number(tableobject.filter(id => tableobject[4].id))
-    // this.idForContact = this.obj.filter(id => id.id === this.obj[4].id)
-    // this.idForContact = tableobject.filter(id => id.id === tableobject[4].id)
-    // this.idForContact++;
     console.log(this.contactrecord.idForContact)
     localStorage.setItem("my_records", JSON.stringify(tableobject));
     var storedcontacts = JSON.parse(localStorage.getItem("my_records"));
-    // storedcontacts.id++;
     console.log(storedcontacts)
    
     this.contactrecord.idForContact = this.obj[this.obj.length-1].id
@@ -135,7 +115,6 @@ export class AddContactComponent implements OnInit {
   }
 
   deleteContact(id:number){
-    this.tablerecords =JSON.parse(localStorage.getItem('my_records'))
-    this.tablerecords = this.tablerecords.filter(recorid => recorid.id !== id)
+    this.contactrecord.deleteRecord(id);
   }
 }
