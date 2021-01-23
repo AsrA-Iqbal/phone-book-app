@@ -16,7 +16,9 @@ import { ContactRecordComponent } from './contact-record/contact-record.componen
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import { AddContactComponent } from './add-contact/add-contact.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -39,9 +41,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCheckboxModule,
     MatIconModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    FormsModule,
 
   ],
+  // exports:[AddContactComponent],
   providers: [],
+  entryComponents:[AddContactComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

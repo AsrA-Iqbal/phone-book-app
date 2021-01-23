@@ -2,7 +2,7 @@
     <span *ngIf="showHideDetails== true">Hide ID</span>
     <span *ngIf="showHideDetails== false">Show ID</span>
 </button>
-<mat-toolbar color="primary">PHONE BOOK<div fxLayout="row" fxLayoutAlign="end center"><mat-icon (click)="openDialog(row)">home</mat-icon></div>
+<mat-toolbar color="primary">PHONE BOOK<div fxLayout="row" fxLayoutAlign="end center"><mat-icon (click)="opendialog()">home</mat-icon></div>
 </mat-toolbar>
 <br>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

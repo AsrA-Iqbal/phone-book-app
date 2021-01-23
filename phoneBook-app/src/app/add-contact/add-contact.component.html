@@ -5,24 +5,29 @@
         </mat-card-header>
         <div mat-card-avatar class="header-image" fxLayoutAlign="end center" fxLayout="column" ></div>
         <mat-card-content>
-            <form fxLayoutAlign="stretch" fxLayout="column">
+            <form  fxLayoutAlign="stretch" fxLayout="column">
                 <mat-form-field  appearance="legacy">
-                    <input matInput placeholder="First Name">
+                    <input matInput placeholder="First Name" [formControl]="name"  required>
                 </mat-form-field>
                 <mat-form-field  appearance="legacy">
-                    <input matInput placeholder="Last Name">
+                    <input matInput placeholder="Last Name" [formControl]="lname"  required>
                 </mat-form-field>
                 <mat-form-field  appearance="legacy">
-                    <input matInput placeholder="Workplace">
+                    <input matInput placeholder="Workplace" [formControl]="wplace"  >
                 </mat-form-field>
                 <mat-form-field  appearance="legacy">
-                    <input matInput placeholder="Mobile No.">
+                    <input matInput placeholder="Mobile No." [formControl]="contact"  required>
                 </mat-form-field>
                 <mat-form-field  appearance="legacy">
-                    <input matInput placeholder="Email">
+                    <input matInput placeholder="Email" [formControl]="email"  required>
                 </mat-form-field>
+                <div class="text-center col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                    <button  mat-raised-button type="submit" color="accent" (click)="addContact()" >SAVE</button> 
+                  </div>
             </form>
         </mat-card-content>
     </mat-card>
 
 </div>
+<!-- Onsubmit(); -->
