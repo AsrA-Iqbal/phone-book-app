@@ -1,4 +1,4 @@
-<div fxLayoutAlign="center center">
+<div fxLayoutAlign="center center" *ngIf="this.contactrecord.editform">
     <mat-card class="add" fxFlex="50">
         <mat-card-header>
             <mat-card-title style="text-align: center;">New Contact</mat-card-title>
@@ -30,4 +30,41 @@
     </mat-card>
 
 </div>
-<!-- Onsubmit(); -->
+
+
+
+<!-- EDiT FORM -->
+  
+<div fxLayoutAlign="center center" *ngIf="!this.contactrecord.editform">
+        <mat-card class="add" fxFlex="50">
+            <mat-card-header>
+                <mat-card-title style="text-align: center;">New Contact</mat-card-title>
+            </mat-card-header>
+            <div mat-card-avatar class="header-image" fxLayoutAlign="end center" fxLayout="column" ></div>
+            <mat-card-content>
+                <form [formGroup]="ContactForm" fxLayoutAlign="stretch" fxLayout="column">
+                    <mat-form-field  appearance="legacy">
+                        <input matInput placeholder="First Name" [formControl]="name" type="text"  required>
+                    </mat-form-field>
+                    <mat-form-field  appearance="legacy">
+                        <input matInput placeholder="Last Name" [formControl]="lname"  required>
+                    </mat-form-field>
+                    <mat-form-field  appearance="legacy">
+                        <input matInput placeholder="Workplace" [formControl]="wplace" >
+                    </mat-form-field>
+                    <mat-form-field  appearance="legacy">
+                        <input matInput placeholder="Mobile No." [formControl]="contact" required>
+                    </mat-form-field>
+                    <mat-form-field  appearance="legacy">
+                        <input matInput placeholder="Email" [formControl]="email"  required>
+                    </mat-form-field>
+                    <div class="text-center col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    
+                        <button  mat-raised-button type="submit" color="accent"  >SAVE</button> 
+                      </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    
+    </div>
+<!-- Onsubmit(); (click)="addContact()" [(ngModel)]="data.name" [(ngModel)]="data.lname" [(ngModel)]="data.wplace"[(ngModel)]="data.email" [(ngModel)]="data.contact"  -->

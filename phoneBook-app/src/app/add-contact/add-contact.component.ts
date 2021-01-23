@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ContactRecordComponent } from '../contact-record/contact-record.component';
-import { FormControl, Validators, SelectControlValueAccessor, NgForm, FormBuilder } from '@angular/forms';
+import { FormControl, Validators, SelectControlValueAccessor, NgForm, FormBuilder, FormGroup } from '@angular/forms';
 import { ContactRecords } from '../contact-records';
 
 
@@ -14,12 +14,11 @@ import { ContactRecords } from '../contact-records';
 export class AddContactComponent implements OnInit {
   // @ViewChild(ContactRecordComponent) contactRef: ContactRecordComponent;
   
-
   obj: ContactRecords[] = [];
 
-  constructor(private contactrecord:ContactRecordComponent,private fb: FormBuilder, public dialogRef: MatDialogRef<ContactRecordComponent>,
+  constructor(public contactrecord:ContactRecordComponent,private fb: FormBuilder, public dialogRef: MatDialogRef<ContactRecordComponent>,
     @Inject(MAT_DIALOG_DATA) public data: [], public dialog: MatDialog, )
-    
+
      { this.obj = this.data;}
 
   onNoClick(): void {
@@ -32,6 +31,13 @@ export class AddContactComponent implements OnInit {
   contact = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required]);
 
+  // ContactForm=new FormGroup( {
+  //   name: new FormControl( '' ),
+  //   lname: new FormControl( '' ),
+  //   wplace: new FormControl( '' ),
+  //   contact: new FormControl( '' ),
+  //   email: new FormControl( '' ),
+  // });
 
   getErrorMessage() {
     // if(this.name.hasError('required')?)
@@ -117,4 +123,16 @@ export class AddContactComponent implements OnInit {
   deleteContact(id:number){
     this.contactrecord.deleteRecord(id);
   }
+
+  // Edit(id:number){
+  //   this.contactrecord.editrecord(id);
+  //   this.contactrecord.editform;
+    // const contact = new ContactForm()
+    //  this.ContactForm.name=this.ContactForm.get( 'name' ).value;
+    //  this.lname=this.ContactForm.get( 'lname' ).value;
+    //  this.wplace=this.ContactForm.get( 'wplace' ).value;
+    //  this.contact=this.ContactForm.get( 'contact' ).value;
+    //  this.email=this.ContactForm.get( 'email' ).value;
+    //  console.log(this.name)
+  // }
 }

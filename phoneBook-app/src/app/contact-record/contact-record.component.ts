@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContactRecords } from '../contact-records';
 import { MatDialog } from '@angular/material/dialog';
 import { AddContactComponent } from '../add-contact/add-contact.component';
@@ -23,7 +23,7 @@ export class ContactRecordComponent implements OnInit {
   // @ViewChild(AddContactComponent)  addcontact: AddContactComponent;
   idForContact: number = 4;
   tablerecords: any;
-
+  editform:false;
   data:any
   showHideDetails: boolean = true;
   displayedColumns: string[] = ['id', 'name', 'lname', 'contact', 'wplace', 'email', 'action']
@@ -52,6 +52,20 @@ export class ContactRecordComponent implements OnInit {
     });
   }
 
+  editrecord(items){
+    console.log(items)
+    var dialogRef = this.dialog.open(AddContactComponent, {
+      width: "100%",
+      height: "50%",
+      data: items,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+      console.log('The dialog was closed');
+      this.editform;
+    });
+  }
+  
 
   deleteRecord(items) {
     console.log(items)
@@ -64,21 +78,18 @@ export class ContactRecordComponent implements OnInit {
         this.tablerecords.splice(i, 1);
         console.log(this.tablerecords)
       }
-      this.idForContact = 4;
+      // this.idForContact = 4;
       localStorage.setItem("my_records", JSON.stringify(this.tablerecords))
     }
 
   }
 
-  
+
   ngOnInit() {
 
     this.show_hide_details();
     this.dataSource = JSON.parse(localStorage.getItem('my_records'))
-
-
-
-    console.log(this.dataSource);
+  console.log(this.dataSource);
   }
 
 }
